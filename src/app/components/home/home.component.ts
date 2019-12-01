@@ -2,57 +2,51 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import { Room } from '../../models/room';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
+
 export class HomeComponent implements OnInit {
+  rooms: Room[];
 
-  user: User;
-  // user:any = {
-  //   user1: null,
-  //   user2: null
-  // }
-
-  constructor(public afAuth: AngularFireAuth, public userService: UserService) {
-    // this.users = userService.user;
-    // console.log(this.users)
-  }
+  constructor(public afAuth: AngularFireAuth, public userService: UserService) { }
 
   ngOnInit() {
+    //llamado del observador del AUTH
     this.onAuthStateChange();
-    this.userService.getUser().subscribe(user => {
-      console.log("Base de Datos - ROOM", user)
+    //Muestra los documentos(rooms) que hay en la colección ROOM (base de datos)
+    this.userService.getUser().subscribe(rooms => {
+      this.rooms = rooms;
+      console.log("Base de Datos - ROOM", this.rooms)
     })
-  }
-
-  login(choise) {
-    console.log("hola")
-    this.afAuth.auth.signInAnonymously()
-      .then(anonymous => {
-        console.log("Anónimo", anonymous.user.uid)
-        this.user = JSON.parse(JSON.stringify(new User(anonymous.user.uid, null)));
-        if (choise === "start") {
-          // this.user.user1= anonymous.user.uid;
-          console.log(this.user)
-          this.sendUser1(this.user)
-        } else if (choise === "join") {
-          this.sendUser2(anonymous.user.uid)
-        }
-
-      })
-      .catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.log("ERROR", errorCode, errorMessage)
-        // ...
-      });
   };
 
+  //metodo para logear jugador de modo anónimo (asíncrono|promesa)
+  signIn() {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInAnonymously()
+        .then(anonymous => {
+          console.log("Anónimo", anonymous.user.uid)
+          let userId: string = (anonymous.user.uid);
+          resolve(userId);
+        })
+        .catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log("ERROR", errorCode, errorMessage)
+          reject(errorMessage)
+          // ...
+        })
+    });
+  };
+
+  //metodo del observador AUTH
   onAuthStateChange() {
     this.afAuth.auth.onAuthStateChanged(user => {
       if (user) {
@@ -62,13 +56,29 @@ export class HomeComponent implements OnInit {
       }
     });
   };
+  //metodo que da id al user1 y crea la sala
+  createRoom() {
+    this.signIn()
+      .then(userId => {
+        let user1 = userId as string;
+        this.userService.addUser1(JSON.parse(JSON.stringify(new Room(user1, null))));
+        console.log(user1)
+      })
+  };
 
-  sendUser1(user: User) {
-    this.userService.addUser1(user);
-  }
+  //metodo que dá id al user2 y lo agrega a la sala
+  joinRoom(room: Room) {
+    this.signIn()
+      .then(userId => {
+        let user2 = userId as string;
+        this.userService.addUser2(user2, room)
+        console.log(user2)
+      })
+  };
 
-  sendUser2(user: string) {
-    this.userService.addUser2(user)
-  }
+  //metodo que borra la sala
+  deleteRoom(room: Room) {
+    this.userService.deleteRoom(room)
+  };
 
 }
