@@ -1,2 +1,12 @@
 <p>home works!</p>
-<button type="button" (click)="login()">START</button>
+<button type="button" (click)="createRoom()">START</button>
+<div *ngIf = "rooms">
+<div *ngFor = "let r of rooms">
+        <h1>ROOM</h1>
+        <button type="button" (click)="joinRoom(r)">JOIN</button>
+        <button type="button" (click)="deleteRoom(r)">CLOSE</button>
+        <div *ngIf = "r.warning">
+                <p> {{r.warning}} </p>
+        </div>
+</div>
+</div>
