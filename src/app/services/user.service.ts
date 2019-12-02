@@ -14,7 +14,7 @@ export class UserService {
 
 
   constructor(public db: AngularFirestore) {
-    this.userCollection = this.db.collection("user");
+    this.userCollection = this.db.collection("room");
     this.user = this.userCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as any;
@@ -22,13 +22,13 @@ export class UserService {
         return data;
       });
     }));
-   }
-   getUser() {
-     return this.user;
-   };
-   addUser (user:any) {
-     this.userCollection.add(user);
-   };
+    }
+    getUser() {
+      return this.user;
+    };
+    addUser (user:any) {
+      this.userCollection.add(user);
+    };
   // getUser() {
   //   this.user = this.userCollection.snapshotChanges().pipe(map(actions => {
   //     return actions.map(a=> {

@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
     this.afAuth.auth.onAuthStateChanged(user => {
       console.log(user)
       console.log("ID USUARIO",user.uid)
-      this.user.userId = user.uid;
+      this.user.user1 = user.uid;
       console.log(this.user)
       // if (user) {
         // User is signed in.
