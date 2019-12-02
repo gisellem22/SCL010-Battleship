@@ -25,20 +25,57 @@ export class UserService {
   getUser() {
     return this.user;
   };
-  addUser1(user: Room) {
-    this.userCollection.add(user);
+  addUser1(user: string) {
+    let room = JSON.parse(JSON.stringify(new Room(user,"")));
+    this.userCollection.add(room);
+  };
+
+  roomId(user:string) {
+    console.log("add user 2")
+    return new Promise((resolve, reject) => {
+      this.userCollection.ref.where("user2", "==","")
+        .get()
+        .then(querySnapshot => {
+          if(querySnapshot.empty) {
+            console.log("holii")
+            this.addUser1(user)
+          }else {
+            querySnapshot.forEach(doc =>{
+              // doc.data() is never undefined for query doc snapshots
+              console.log("holaaaaaaaaaaaaaa", doc.id, " => ", doc.data());
+              resolve([doc.id, doc.data()])
+            });
+          }
+        })
+        .catch(function (error) {
+          console.log("Error getting documents: ", error);
+          reject(error)
+        });
+    })
+  };
+  addUser2(user2:string) {
+   this.roomId(user2)
+   .then(roomArray => {
+    let room = JSON.parse(JSON.stringify(roomArray));
+    if (room[1].user1 === user2) {
+      console.log("Espere JUGADOR")
+          // this.userCollection.doc(room[0]).update(JSON.parse(JSON.stringify(new Room(room[1].user1, null, "Espere JUGADOR2"))));
+        } else {
+          this.userCollection.doc(room[0]).update(JSON.parse(JSON.stringify(new Room(room[1].user1, user2))));
+        }
+   })
   };
   
-  addUser2(user2: string, room: Room) {
-    if (room.user1 === user2) {
-      this.userCollection.doc(room.id).update(JSON.parse(JSON.stringify(new Room(room.user1, null, "Espere JUGADOR2"))));
-    } else {
-      this.userCollection.doc(room.id).update(JSON.parse(JSON.stringify(new Room(room.user1, user2))));
-    }
-  };
-  deleteRoom(room: Room) {
-    this.userCollection.doc(room.id).delete();
-  };
+  // addUser2(user2: string, room: Room) {
+  //   if (room.user1 === user2) {
+  //     this.userCollection.doc(room.id).update(JSON.parse(JSON.stringify(new Room(room.user1, null, "Espere JUGADOR2"))));
+  //   } else {
+  //     this.userCollection.doc(room.id).update(JSON.parse(JSON.stringify(new Room(room.user1, user2))));
+  //   }
+  // };
+  // deleteRoom(room: Room) {
+  //   this.userCollection.doc(room.id).delete();
+  // };
 }
 
 // roomId() {
