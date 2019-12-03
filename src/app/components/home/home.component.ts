@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     //llamado del observador del AUTH
     this.onAuthStateChange();
     //Muestra los documentos(rooms) que hay en la colección ROOM (base de datos)
-    this.userService.getUser().subscribe(rooms => {
+    this.userService.getRooms().subscribe(rooms => {
       this.rooms = rooms;
       console.log("Base de Datos - ROOM", this.rooms)
     })

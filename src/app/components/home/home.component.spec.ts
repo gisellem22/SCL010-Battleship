@@ -33,4 +33,17 @@ describe('HomeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it ('should get the id of the user',() =>{
+    expect(component.signIn).toBeTruthy();
+  }); 
+
+  it ('should observe state of user',() =>{
+    expect(component.onAuthStateChange).toBeTruthy();
+  }); 
+
+  it ('should get the id of user and send it to room',() =>{
+    expect(component.createRoom).toBeTruthy();
+  });
+
 });
