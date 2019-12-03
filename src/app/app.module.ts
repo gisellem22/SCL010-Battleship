@@ -5,7 +5,6 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserService } from 'src/app/services/user.service'
 
 import { FormsModule } from '@angular/forms';
 
