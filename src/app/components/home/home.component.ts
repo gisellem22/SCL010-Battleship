@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 
@@ -60,25 +61,30 @@ export class HomeComponent implements OnInit {
   createRoom() {
     this.signIn()
       .then(userId => {
-        let user1 = userId as string;
-        this.userService.addUser1(JSON.parse(JSON.stringify(new Room(user1, null))));
-        console.log(user1)
+        let user = userId as string;
+        console.log(user, this.rooms)
+        if (this.rooms.length == 0) {
+        this.userService.addUser1(user);
+        console.log(user)
+        } else {
+          this.userService.addUser2(user)
+        }
       })
   };
 
   //metodo que dá id al user2 y lo agrega a la sala
-  joinRoom(room: Room) {
-    this.signIn()
-      .then(userId => {
-        let user2 = userId as string;
-        this.userService.addUser2(user2, room)
-        console.log(user2)
-      })
-  };
+  // joinRoom(room: Room) {
+  //   this.signIn()
+  //     .then(userId => {
+  //       let user2 = userId as string;
+  //       this.userService.addUser2(user2)
+  //       console.log(user2)
+  //     })
+  // };
 
   //metodo que borra la sala
-  deleteRoom(room: Room) {
-    this.userService.deleteRoom(room)
-  };
+  // deleteRoom(room: Room) {
+  //   this.userService.deleteRoom(room)
+  // };
 
 }
