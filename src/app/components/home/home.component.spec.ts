@@ -7,7 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../../app-routing.module';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../../../environments/environment';
 import { AngularFireModule } from '@angular/fire';
+
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -16,7 +18,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ HomeComponent,PageNotFoundComponent ],
-      imports: [FormsModule,AppRoutingModule,AngularFireAuthModule, AngularFirestoreModule,AngularFireModule.initializeApp],
+      imports: [FormsModule,AppRoutingModule, AngularFireModule.initializeApp(environment.firebase),AngularFireAuthModule, AngularFirestoreModule],
       providers: [UserService]
     })
     .compileComponents();
