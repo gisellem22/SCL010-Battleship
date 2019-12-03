@@ -3,18 +3,17 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Room } from '../models/room';
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   userCollection: AngularFirestoreCollection<any>;
-  user: Observable<Room[]>;
+  rooms: Observable<Room[]>;
   userDoc: AngularFirestoreDocument<any>;
 
   constructor(public db: AngularFirestore) {
     this.userCollection = this.db.collection("room");
-    this.user = this.userCollection.snapshotChanges().pipe(map(actions => {
+    this.rooms = this.userCollection.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as any;
         data.id = a.payload.doc.id;
@@ -22,8 +21,8 @@ export class UserService {
       });
     }));
   }
-  getUser() {
-    return this.user;
+  getRooms() {
+    return this.rooms;
   };
   addUser1(user: string) {
     let room = JSON.parse(JSON.stringify(new Room(user,"")));
