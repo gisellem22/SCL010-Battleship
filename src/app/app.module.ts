@@ -14,13 +14,15 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserService } from './services/user.service';
 import { SquareComponent } from './components/square/square.component';
+import { BoardComponent } from './components/board/board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    SquareComponent
+    SquareComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
