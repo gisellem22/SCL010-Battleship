@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AngularFireModule } from '@angular/fire';
@@ -15,10 +14,6 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserService } from './services/user.service';
 
-//Angular Material
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-
 
 @NgModule({
   declarations: [
@@ -28,9 +23,6 @@ import { MatCardModule } from '@angular/material/card';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatCardModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,

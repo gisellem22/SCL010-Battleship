@@ -1,15 +1,23 @@
-.img-fluid{
-    width: 1300px;
-    height: 380px;
+.img-fluid {
+  width: 100%;
+  height: auto;
 }
 
-.mat-card-title{
+.btn-warning, .card-title{
     font-family: 'Pirata One', cursive;
-    font-size: 50px;
+    margin-top: 2rem;
 }
 
-.mat-raised-button{
-    margin-top: 3rem;
-    font-family: 'Pirata One', cursive;
-    font-size: 30px;
+.btn-warning{
+  margin-bottom: 20px;
+  font-size: 25px;
+  color: rgb(56, 35, 19);
+
 }
+
+.card-title{
+  font-size: 50px;
+  color: rgb(56, 35, 19);
+}
+
+
