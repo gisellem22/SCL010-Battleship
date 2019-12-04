@@ -10,7 +10,7 @@
 
 .btn-warning{
   margin-bottom: 20px;
-  font-size: 25px;
+  font-size: 20px;
   color: rgb(56, 35, 19);
 
 }
@@ -19,5 +19,27 @@
   font-size: 50px;
   color: rgb(56, 35, 19);
 }
+
+.progress{
+  margin-top: 2rem;
+}
+
+.modal-content{
+  background-image: linear-gradient(to bottom, #664216, #896438, #ac885c, #d1ad81, #f6d4a9);
+}
+
+.modal-title{
+  font-family: 'Pirata One', cursive;
+  color: rgb(56, 35, 19);
+
+}
+
+.modal-footer{
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-top-width: 0px;
+  height: 80px;
+}
+
 
 
