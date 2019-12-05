@@ -16,6 +16,7 @@ import { UserService } from './services/user.service';
 import { SquareComponent } from './components/square/square.component';
 import { BoardComponent } from './components/board/board.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import { BoardComponent } from './components/board/board.component';
     AngularFireAuthModule,
     AngularFirestoreModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
