@@ -1,10 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
-
-body{
-    margin: 0px;
-    background-image: linear-gradient(to bottom, #664216, #664216, #664216, #664216, #664216, #724d21, #7d582d, #896438, #a47f53, #bf9a6e, #dab78b, #f6d4a9);
-    background-attachment: fixed;  
-    text-align: center; 
-
-}
-
+* {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+};

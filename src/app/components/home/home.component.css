@@ -1,45 +1,71 @@
-.img-fluid {
-  width: 100%;
-  height: auto;
+section{
+  height: 100vh;
+  width: 100vw;
+  background-image: linear-gradient(to bottom, #67d2ef, #9fdafb, #cbe4ff, #ebf0ff, #ffffff);  /* background-image: url(../../../assets/img/mapa.jpg);
+  background-size: 100% 100%;;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
+  text-align: center; 
+}
+.logo {
+  padding-top: 20px;
+}
+img {
+  max-width: 550px;
+}
+.entry {
+  padding-top: 20vh;
 }
 
-.btn-warning, .card-title{
+.btn-warning, h1{
     font-family: 'Pirata One', cursive;
     margin-top: 2rem;
 }
-
 .btn-warning{
-  margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 25px;
   color: rgb(56, 35, 19);
-
+  letter-spacing: 4px;
+}
+.title{
+  font-size:70px;
+  color: #ffbf00;
+  text-shadow: 6px 6px 8px  rgb(56, 35, 19);
 }
 
-.card-title{
-  font-size: 50px;
-  color: rgb(56, 35, 19);
+@media screen and (min-width:770px) and (max-width:992px){
+  .logo {
+    padding-top: 90px;
+  }
+  .entry {
+    padding-top:130px;
+  }
 }
-
-.progress{
-  margin-top: 2rem;
+@media screen and (min-width:320px) and (max-width:770px){
+  .row {
+    justify-content: center;
+  }
+  .logo {
+    padding-top: 50px;
+  }
+  .title {
+    padding-top:0 !important;
+  }
+  .entry {
+    padding-top:0;
+  }
 }
-
-.modal-content{
-  background-image: linear-gradient(to bottom, #664216, #896438, #ac885c, #d1ad81, #f6d4a9);
+@media screen and (max-width:320px){
+  .row {
+    justify-content: center;
+  }
+  .logo {
+    padding-top: 10px;
+  }
+  .title {
+    padding-top:0 !important;
+  }
+  .entry {
+    padding-top:0;
+  }
+  
 }
-
-.modal-title{
-  font-family: 'Pirata One', cursive;
-  color: rgb(56, 35, 19);
-
-}
-
-.modal-footer{
-  padding-bottom: 0px;
-  padding-top: 0px;
-  border-top-width: 0px;
-  height: 80px;
-}
-
-
-

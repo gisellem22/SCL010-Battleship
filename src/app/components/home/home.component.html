@@ -1,32 +1,20 @@
-<img src="assets/img/mapa.jpg" class="img-fluid" alt="Responsive image">
-
-<h5 class="card-title">Busqueda del Tesoro</h5>
-
-<button type="button" class="btn btn-warning">Start</button><br><br>
-
-<!-- Modale -->
-
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-    Esperando J02
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Esperando Jugador 02</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          </button>
-        </div>
-        <div class="modal-body">
-            <div class="progress">
-                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-              </div>        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<section>
+                <div class="container">
+                        <div class="row p-0">
+                                <div class="logo col-9 col-sm-9 col-md-7 col-lg-7" data-aos="fade-up" data-aos-duration="3000">
+                                        <img src="../../../assets/img/isla-01.svg" class="img-fluid" alt="Responsive image">
+                                </div>
+                                <div class="entry col-9 col-sm-9 col-md-4 col-lg-4" data-aos="fade-down" data-aos-duration="3000">
+                                        <h1 class="title m-0 pt-5">Isla del Tesoro</h1>
+                                        <button type="button" class="btn btn-warning btn-lg px-5 py-3 shadow"
+                                                (click)="createRoom()" routerLink="/board"
+                                                routerLinkActive="active">Start</button>
+                                </div>
+                        </div>
+                </div>
+        </section>
+        
+        
+        
+        
+        
