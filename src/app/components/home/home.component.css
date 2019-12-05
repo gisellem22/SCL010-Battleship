@@ -7,9 +7,17 @@ section{
   background-attachment: fixed; */
   text-align: center; 
 }
-img {
-  width: 300px;
+.logo {
+  padding-top: 20px;
 }
+
+img {
+  max-width: 550px;
+}
+.entry {
+  padding-top: 20vh;
+}
+
 .btn-warning, h1{
     font-family: 'Pirata One', cursive;
     margin-top: 2rem;
@@ -18,12 +26,49 @@ img {
 .btn-warning{
   font-size: 25px;
   color: rgb(56, 35, 19);
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 .title{
   font-size:70px;
   color: #ffbf00;
-  text-shadow: 6px 6px 8px  #000000;
+  text-shadow: 6px 6px 8px  rgb(56, 35, 19);
 }
 
 
+@media screen and (min-width:770px) and (max-width:992px){
+  .logo {
+    padding-top: 90px;
+  }
+  .entry {
+    padding-top:130px;
+  }
+}
+@media screen and (min-width:320px) and (max-width:770px){
+  .row {
+    justify-content: center;
+  }
+  .logo {
+    padding-top: 50px;
+  }
+  .title {
+    padding-top:0 !important;
+  }
+  .entry {
+    padding-top:0;
+  }
+}
+@media screen and (max-width:320px){
+  .row {
+    justify-content: center;
+  }
+  .logo {
+    padding-top: 10px;
+  }
+  .title {
+    padding-top:0 !important;
+  }
+  .entry {
+    padding-top:0;
+  }
+  
+}
