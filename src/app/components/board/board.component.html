@@ -3,7 +3,9 @@
     <div class="row">
         <main class="col">
 
-            <app-square *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
+            <app-square *ngFor="let square of squares; let i = index" 
+            [value]="square" 
+            (click)="hideTreasures(i)">
             </app-square>
             <app-enemy-board></app-enemy-board>
 
