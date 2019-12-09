@@ -1,19 +1,16 @@
 <section>
-    <div class="container">
-<h1>Current Player: {{ player }} </h1>
-<button (click)="newGame()" >Start a new Game</button>
+    <button (click)="newGame()">Start a new Game</button>
+    <div class="row">
+        <main class="col">
 
-<h2 *ngIf="winner">
-    Player {{ winner }} won the game!
-</h2>
-        <main>
-                <app-square
-                *ngFor="let square of squares; let i = index"
-                [value]="square"
-                (click)="hideTreasures(i)">
-                <!--(click)="makeMove(i)"> -->
-                </app-square>
-            </main>
-</div>
+            <app-square *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
+            </app-square>
+            <app-enemy-board></app-enemy-board>
+
+
+        </main>
+
+
+    </div>
 </section>
 
