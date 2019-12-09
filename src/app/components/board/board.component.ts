@@ -56,4 +56,25 @@ if (this.arrOfIdx.length === 3) {
 }
 console.log(this.areTreasuresHidden)
 }
+  makeMove(idx: number) {
+    console.log(idx)
+    console.log(idx, !this.squares[idx], this.squares, this.index)
+    this.arrOfIdx.forEach(a => {
+      if (!this.squares[idx]) {
+        if (idx === a) {
+          //  this.player = this.play(true)
+          this.index = true;
+          this.squares.splice(idx, 1, this.index);
+          console.log("oii",this.squares)
+
+        } 
+        else {
+          console.log('xau')
+          this.index = false;
+          this.squares.splice(idx, 1, this.index);
+        }
+      }
+    })
+
+  };
 }
