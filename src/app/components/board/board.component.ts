@@ -7,8 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
   squares: any[];
-  xIsNext: boolean;
+  index: boolean;
   winner: string;
+  // player1: string = 'p1';
+  // player2: string = 'p2';
+  // player: boolean;
+  arrOfIdx: number[] = []
+  areTreasuresHidden:any = {
+    player1: false
+  }
 
   constructor() { }
 
@@ -19,41 +26,55 @@ export class BoardComponent implements OnInit {
   newGame() {
     this.squares = Array(9).fill(null);
     this.winner = null;
-    this.xIsNext = true;
+    this.index = true;
   };
 
-  get player() {
-    return this.xIsNext ? 'X':'O';
-  };
-
+  // play(value: boolean) {
+  //   console.log(value)
+  //   if (value) {
+  //     return this.index = true;
+  //   } else {
+  //     return this.index = false;
+  //   }
+  // };
+  hideTreasures(idx:number) {
+    if(this.arrOfIdx.length <3){
+      this.arrOfIdx.push(idx)
+      this.index = true;
+      this.squares.splice(idx, 1, this.index);
+      console.log(this.arrOfIdx)
+      this.changeHiddenState()
+    } else {
+      console.log("hasta aqui nomás")
+    }
+console.log(this.arrOfIdx)
+  }
+changeHiddenState() {
+if (this.arrOfIdx.length === 3) {
+  console.log("hey")
+  this.areTreasuresHidden.player1 = true;
+}
+console.log(this.areTreasuresHidden)
+}
   makeMove(idx: number) {
-    if (!this.squares[idx]){
-      this.squares.splice(idx, 1, this.player);
-      this.xIsNext = !this.xIsNext;
-    }
-    this.winner = this.calculateWinner();
-  };
-  calculateWinner() {
-    const lines = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6]
-    ];
-    for (let i = 0; i < lines.length; i++) {
-      const [a, b, c] = lines[i];
-      if (
-        this.squares[a] &&
-        this.squares[a] === this.squares[b] &&
-        this.squares[a] === this.squares[c]
-      ) {
-        return this.squares[a];
+    console.log(idx)
+    console.log(idx, !this.squares[idx], this.squares, this.index)
+    this.arrOfIdx.forEach(a => {
+      if (!this.squares[idx]) {
+        if (idx === a) {
+          //  this.player = this.play(true)
+          this.index = true;
+          this.squares.splice(idx, 1, this.index);
+          console.log("oii",this.squares)
+
+        } 
+        else {
+          console.log('xau')
+          this.index = false;
+          this.squares.splice(idx, 1, this.index);
+        }
       }
-    }
-    return null;
+    })
+
   };
 }

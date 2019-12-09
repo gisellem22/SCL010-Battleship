@@ -7,6 +7,9 @@ import { Component, Input } from '@angular/core';
 })
 export class SquareComponent {
 
-  @Input()value: 'X'|'O';
+  chest: string = '../../../assets/img/chest.jpg';
+  skull: string = '../../../assets/img/skull.png';
+
+  @Input()value:string;
 
 }
