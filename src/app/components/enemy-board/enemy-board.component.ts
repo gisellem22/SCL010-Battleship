@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-board1',
-  templateUrl: './board1.component.html',
-  styleUrls: ['./board1.component.css']
+  selector: 'app-enemy-board',
+  templateUrl: './enemy-board.component.html',
+  styleUrls: ['./enemy-board.component.css']
 })
-export class Board1Component implements OnInit {
+export class EnemyBoardComponent implements OnInit {
+
   squares: any[];
   xIsNext: boolean;
   winner: string;
@@ -56,4 +57,4 @@ export class Board1Component implements OnInit {
     }
     return null;
   };
-}
+};

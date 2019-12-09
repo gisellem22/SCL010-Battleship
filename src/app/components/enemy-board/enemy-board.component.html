@@ -3,8 +3,8 @@
     <div class="row">
         <main class="col">
 
-            <app-square2 *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
-            </app-square2>
+            <app-enemy-square *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
+            </app-enemy-square>
 
         </main>
     </div>

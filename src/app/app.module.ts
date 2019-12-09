@@ -13,10 +13,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { UserService } from './services/user.service';
-import { Square1Component } from './components/square1/square1.component';
-import { Board1Component } from './components/board1/board1.component';
-import { Board2Component } from './components/board2/board2.component';
-import { Square2Component } from './components/square2/square2.component';
+import { BoardComponent } from './components/board/board.component';
+import { EnemyBoardComponent } from './components/enemy-board/enemy-board.component';
+import { EnemySquareComponent } from './components/enemy-square/enemy-square.component';
+import { SquareComponent } from './components/square/square.component';
 
 
 @NgModule({
@@ -24,10 +24,10 @@ import { Square2Component } from './components/square2/square2.component';
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    Square1Component,
-    Board1Component,
-    Board2Component,
-    Square2Component
+    SquareComponent,
+    BoardComponent,
+    EnemyBoardComponent,
+    EnemySquareComponent
   ],
   imports: [
     BrowserModule,

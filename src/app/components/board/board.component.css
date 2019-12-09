@@ -12,7 +12,7 @@ main {
     grid-gap: 0px;
 }
 
-app-square1 {
+app-square {
     border: 1px gray solid;
     height: 100px;
     margin: 2px;
