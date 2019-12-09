@@ -1,0 +1,16 @@
+<section>
+    <button (click)="newGame()">Start a new Game</button>
+    <div class="row">
+        <main class="col">
+
+            <app-square1 *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
+            </app-square1>
+
+            <app-board2></app-board2>
+
+
+        </main>
+
+
+    </div>
+</section>

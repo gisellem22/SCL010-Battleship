@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  selector: 'app-board1',
+  templateUrl: './board1.component.html',
+  styleUrls: ['./board1.component.css']
 })
-export class BoardComponent implements OnInit {
+export class Board1Component implements OnInit {
   squares: any[];
   xIsNext: boolean;
   winner: string;
