@@ -1,18 +1,13 @@
 <section>
-    <button (click)="newGame()">Start a new Game</button>
-    <div class="row">
-        <main class="col">
-
-            <app-square *ngFor="let square of squares; let i = index" 
-            [value]="square" 
-            (click)="hideTreasures(i)">
-            </app-square>
-            <app-enemy-board></app-enemy-board>
-
-
-        </main>
-
-
-    </div>
+    <main>
+        <app-square *ngFor="let square of squares; let i = index" 
+        [value]="square" 
+        (click)="playGame(i)">
+    </app-square>
+</main>
+<button type="button" class="btn btn-warning btn-lg px-5 py-3 shadow" 
+(click)="startGame()">Start</button>
 </section>
+
+
 
