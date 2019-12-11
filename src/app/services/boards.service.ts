@@ -1,52 +1,61 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
-@Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+
+@Injectable({
+  providedIn: 'root'
 })
-export class BoardComponent implements OnInit {
+
+export class BoardsService {
   squares: any[];
   index: boolean;
   winner: string;
   arrOfIdx: number[] = [];
-  hidddingAt: number[];
-  
+  hidddingAt: number[] = [];
+  game:any;
+
   hidding: any = {
     player1: false
   };
 
+  public newGameSubject = new Subject <any>();
+  newGameObservable = this.newGameSubject.asObservable();
+
+  getAnswer(game:any){
+    console.log("aii")
+    this.hidddingAt = [];
+    this.arrOfIdx = [];
+    this.game = game;
+    this.newGameSubject.next(game);
+    }
+  
   constructor() { }
-
-  ngOnInit() {
-    this.newGame();
-  }
-
+  
   newGame() {
     this.squares = Array(9).fill(null);
     this.winner = null;
     this.index = true;
     this.arrOfIdx = [];
+    console.log(this.squares, this.winner,this.index,this.arrOfIdx)
+    return {
+    squares: this.squares,
+    winner: this.winner,
+    index: this.index,
+    arrOfIdx: this.arrOfIdx
+    }
   };
 
-  // play(value: boolean) {
-  //   console.log(value)
-  //   if (value) {
-  //     return this.index = true;
-  //   } else {
-  //     return this.index = false;
-  //   }
-  // };
   playGame(idx:number) {
-    console.log(this.hidding.player1);
-    if (this.hidding.player1 ===false){
+    console.log("servicio", idx, this.hidding.player1)
+    if (!this.hidding.player1){
       this.hideTreasures(idx)
     } else {
       this.makeMove(idx)
     }
   };
-  
+
   hideTreasures(idx: number) {
+    console.log("hide",idx)
     //si no existe nada en el arreglo, guarda el primer indice
     if (this.arrOfIdx.length < 1) {
       this.arrOfIdx.push(idx)
@@ -77,7 +86,7 @@ export class BoardComponent implements OnInit {
       this.hidding.player1 = true;
       this.hidddingAt = Array.from(this.arrOfIdx);
       console.log("111",this.hidding,"original",this.arrOfIdx, "clone",this.hidddingAt)
-      this.newGame();
+      return this.newGame();
     } 
   };
 
@@ -100,5 +109,12 @@ export class BoardComponent implements OnInit {
       }
     })
   };
+
+
+  hola () {
+    return "hola";
+  };
+
+ 
 
 }
