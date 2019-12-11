@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BoardsService } from '../../services/boards.service';
-
 
 @Component({
   selector: 'app-gameboard',
@@ -8,20 +6,10 @@ import { BoardsService } from '../../services/boards.service';
   styleUrls: ['./gameboard.component.css']
 })
 export class GameboardComponent implements OnInit {
- 
-  constructor(public boardsService: BoardsService) { }
+
+  constructor() { }
 
   ngOnInit() {
   }
 
-  newGame() {
-    console.log("uii")
-    this.boardsService.getAnswer({
-      squares: Array(9).fill(null),
-      winner: null,
-      index: true,
-      arrOfIdx: [],
-      hidddingAt:[]
-      })
-  }
 }
