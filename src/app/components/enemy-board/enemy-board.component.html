@@ -1,6 +1,13 @@
 <section>
         <main>
-            <app-enemy-square *ngFor="let square of squares; let i = index" [value]="square" (click)="makeMove(i)">
-            </app-enemy-square>
-        </main>
-</section>
+            <app-square *ngFor="let square of squares; let i = index" 
+            [value]="square" 
+            (click)="playGame(i)">
+        </app-square>
+    </main>
+    <button type="button" class="btn btn-warning btn-lg px-5 py-3 shadow my-4" 
+    (click)="startGame()">Start</button>
+    </section>       
+    
+    
+    
