@@ -1,6 +1,30 @@
-#gameboard{
-    height: 100vh;
-    width: 100vw;
-    background-image: linear-gradient(to bottom, #67d2ef, #9fdafb, #cbe4ff, #ebf0ff, #ffffff);
-}
-
+#gameboard {
+            height: 100vh;
+            width: 100vw;
+            background-image: linear-gradient(to bottom, #67d2ef, #9fdafb, #cbe4ff, #ebf0ff, #ffffff);
+            padding-top: 20px;
+        }
+        
+        @media screen and (min-width:770px) and (max-width:992px) {
+            #playerOne,
+            #playerTwo {
+                padding-top: 130px;
+            }
+            .row {
+                justify-content: center;
+            }
+        }
+        
+        @media screen and (min-width:320px) and (max-width:770px) {
+            #playerOne,
+            #playerTwo {
+                margin: 0px;
+            }
+            .row {
+                justify-content: center;
+            }
+            /* main {
+                    display: flex;
+                    justify-self: center;
+                } */
+        }
