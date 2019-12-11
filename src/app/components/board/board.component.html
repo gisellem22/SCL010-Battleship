@@ -1,13 +1,10 @@
-<section>
+<section class="text-center">
     <main>
         <app-square *ngFor="let square of squares; let i = index" 
         [value]="square" 
         (click)="playGame(i)">
     </app-square>
 </main>
-<button type="button" class="btn btn-warning btn-lg px-5 py-3 shadow my-4" 
+<button type="button" class="class="btn btn-warning btn-lg px-5 py-3 mt-3 shadow my-4" 
 (click)="startGame()">Start</button>
 </section>       
-
-
-
