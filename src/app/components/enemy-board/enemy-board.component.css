@@ -2,11 +2,13 @@ main {
     display: grid;
     grid-template-columns: 90px 90px 90px;
     grid-gap: 0px;
+    
 }
 
 app-square {
     border: 1px gray solid;
     height: 100px;
     margin: 2px;
-
+    
 }
+

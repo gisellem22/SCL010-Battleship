@@ -1,4 +1,4 @@
-        #gameboard {
+#gameboard {
             height: 100vh;
             width: 100vw;
             background-image: linear-gradient(to bottom, #67d2ef, #9fdafb, #cbe4ff, #ebf0ff, #ffffff);

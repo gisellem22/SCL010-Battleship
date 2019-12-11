@@ -1,6 +1,8 @@
-<section class="text-center">
+<section class="text-center p-5">
     <main>
+
         <app-square *ngFor="let square of squares; let i = index" 
+        class="shadow border"
         [value]="square" 
         (click)="playGame(i)">
     </app-square>
