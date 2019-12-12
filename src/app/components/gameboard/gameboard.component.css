@@ -4,6 +4,10 @@
             background-image: linear-gradient(to bottom, #67d2ef, #9fdafb, #cbe4ff, #ebf0ff, #ffffff);
             padding-top: 20px;
         }
+
+        .row{
+            justify-content: space-around !important;
+        }
         
         @media screen and (min-width:770px) and (max-width:992px) {
             #playerOne,
