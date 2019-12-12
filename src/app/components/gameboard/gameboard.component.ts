@@ -7,14 +7,14 @@ import { BoardsService } from '../../services/boards.service';
   styleUrls: ['./gameboard.component.css']
 })
 export class GameboardComponent implements OnInit {
-  hola:string;
+  player:string;
 
   constructor(public boardsService:BoardsService) { }
 
   ngOnInit() {
+    this.boardsService.newPlayerObservable.subscribe(player =>{
+      this.player = player;
+      console.log(this.player)
+    })
   }
-start (hola:string) {
-
-  this.hola = this.boardsService.hola(hola)
-}
 }

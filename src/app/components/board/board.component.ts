@@ -138,6 +138,7 @@ export class BoardComponent implements OnInit {
       // this.treasureOff();
       console.log("jugador 1", this.treasuresAt1)
       this.boardsService.printTreasures(this.treasuresAt1)
+      this.boardsService.player('Jugador 2')
     }
   } else if (this.hidding.player1 ===true && this.hidding.player2 ===false){
     if (this.arrOfIdx2.length === 3) {

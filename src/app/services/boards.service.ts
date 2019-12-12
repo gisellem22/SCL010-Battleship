@@ -118,8 +118,11 @@ export class BoardsService {
   //   })
   // };
 
-  hola (hola:string) {
-    return hola;
+  public newPlayerSubject = new Subject <any>();
+  newPlayerObservable = this.newPlayerSubject.asObservable();
+
+  player (player:string) {
+    this.newPlayerSubject.next(player);
   };
   
 }
