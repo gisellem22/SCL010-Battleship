@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BoardsService } from '../../services/boards.service';
 
 @Component({
   selector: 'app-enemy-board',
@@ -11,16 +12,22 @@ export class EnemyBoardComponent implements OnInit {
   index: boolean;
   winner: string;
   arrOfIdx: number[] = [];
-  hidddingAt: number[];
+  treasuresAt: number[];
   
   hidding: any = {
     player1: false
   };
 
-  constructor() { }
+  constructor(public boardsService:BoardsService) { }
 
   ngOnInit() {
     this.newGame();
+    this.boardsService.newGameObservable.subscribe(arr => {
+      console.log(arr)
+      this.arrOfIdx = arr;
+      console.log("arr",this.arrOfIdx, "state",this.hidding.player1)
+      this.startGame()
+    });
   }
 
   newGame() {
@@ -76,8 +83,8 @@ export class EnemyBoardComponent implements OnInit {
     if (this.arrOfIdx.length === 3) {
       console.log("hey")
       this.hidding.player1 = true;
-      this.hidddingAt = Array.from(this.arrOfIdx);
-      console.log("111",this.hidding,"original",this.arrOfIdx, "clone",this.hidddingAt)
+      this.treasuresAt = Array.from(this.arrOfIdx);
+      console.log("111",this.hidding,"original",this.arrOfIdx, "clone",this.treasuresAt)
       this.newGame();
     } 
   };
@@ -86,7 +93,7 @@ export class EnemyBoardComponent implements OnInit {
   makeMove(idx: number) {
     console.log(idx)
     console.log(idx, !this.squares[idx], this.squares, this.index)
-    this.hidddingAt.forEach(a => {
+    this.treasuresAt.forEach(a => {
       if (!this.squares[idx]) {
         if (idx === a) {
           this.index = true;
