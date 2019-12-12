@@ -111,8 +111,8 @@ export class BoardsService {
   };
 
 
-  hola () {
-    return "hola";
+  hola (hola:string) {
+    return hola;
   };
 
  
