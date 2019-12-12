@@ -18,6 +18,7 @@ import { EnemyBoardComponent } from './components/enemy-board/enemy-board.compon
 import { EnemySquareComponent } from './components/enemy-square/enemy-square.component';
 import { SquareComponent } from './components/square/square.component';
 import { GameboardComponent } from './components/gameboard/gameboard.component';
+import { WinnerComponent } from './winner/winner.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { GameboardComponent } from './components/gameboard/gameboard.component';
     BoardComponent,
     EnemyBoardComponent,
     EnemySquareComponent,
-    GameboardComponent
+    GameboardComponent,
+    WinnerComponent
   ],
   imports: [
     BrowserModule,
