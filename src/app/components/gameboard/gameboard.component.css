@@ -5,6 +5,15 @@
             padding-top: 20px;
         }
 
+        .titleTwo {
+            font-size: 50px;
+            color: #FFBF00;
+            text-shadow: 6px 6px 8px rgb(56, 35, 19);
+            padding-bottom: 30px;
+            font-family: 'Pirata One', cursive;
+        }
+                
+
         .row{
             justify-content: space-around !important;
         }
@@ -27,8 +36,18 @@
             .row {
                 justify-content: center;
             }
-            /* main {
-                    display: flex;
-                    justify-self: center;
-                } */
+            main {
+                display: flex;
+                justify-content: space-between !important;
+                grid-template-columns: 30px 30px 30px;
+                background-size: cover;
+            }
+            app-square {
+                height: 30px;
+            }
+            img {
+                width: 150px;
+                height: 150px;
+            }
         }
+
