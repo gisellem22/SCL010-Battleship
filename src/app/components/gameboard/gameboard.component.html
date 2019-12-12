@@ -8,7 +8,14 @@
                 <app-board></app-board>
 
             </div>
-            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0">
+            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0" *ngIf="!hola">
+                <div class="row justify-content-center">
+                        <img src="../../../assets/img/loro1.png"  class="col-10" style="width:350px; height: 350px;" alt="">
+                        <button type="button" class="btn btn-warning btn-lg px-5 py-3 mt-3 shadow my-4 ol-10" 
+                    (click)="start('hola')">Start</button> 
+                </div>
+            </div>
+            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0" *ngIf="hola">
                 <app-enemy-board></app-enemy-board>
             </div>
         </div>

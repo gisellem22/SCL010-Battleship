@@ -7,6 +7,7 @@ import { BoardsService } from '../../services/boards.service';
   styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
+
   squares: any[];
   index: any;
   winner: string;
