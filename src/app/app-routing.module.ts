@@ -4,10 +4,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { GameboardComponent } from './components/gameboard/gameboard.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { WinnerComponent } from './components/winner/winner.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'gameboard', component: GameboardComponent },
+  { path: 'winner', component: WinnerComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent },
 ];
