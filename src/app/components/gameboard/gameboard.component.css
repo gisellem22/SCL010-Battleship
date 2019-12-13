@@ -5,6 +5,11 @@
             padding-top: 20px;
         }
 
+        .parrot {
+            width:400px; 
+            height:400px;
+        }
+
         .titleTwo {
             font-size: 50px;
             color: #FFBF00;
@@ -45,9 +50,17 @@
             app-square {
                 height: 30px;
             }
-            img {
+            .parrot {
                 width: 150px;
                 height: 150px;
+
+            }
+            .parrot-box {
+                margin-top: 0;
+            }
+            #playerTwoParrot {                
+                margin: 0 !important;
+                margin-bottom: 50px !important;  
             }
         }
 
