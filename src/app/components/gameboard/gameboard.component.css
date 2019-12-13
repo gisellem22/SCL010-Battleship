@@ -11,8 +11,8 @@
             text-shadow: 6px 6px 8px rgb(56, 35, 19);
             padding-bottom: 30px;
             font-family: 'Pirata One', cursive;
+            letter-spacing: 2px;
         }
-                
 
         .row{
             justify-content: space-around !important;

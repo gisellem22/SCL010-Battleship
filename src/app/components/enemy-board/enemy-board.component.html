@@ -3,9 +3,10 @@
             <app-square *ngFor="let square of squares; let i = index" 
             class="shadow border"
             [value]="square" 
-            (click)="playGame(i)">
+            (click)="makeMove(i)">
         </app-square>
     </main>
-    <button type="button" class="btn btn-warning btn-lg px-5 py-3 mt-3 shadow my-4" 
-    (click)="startGame()">Start</button>
-    </section>  
+    <!-- <button type="button" class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" 
+    (click)="startGame()">Start</button> -->
+    </section>       
+    

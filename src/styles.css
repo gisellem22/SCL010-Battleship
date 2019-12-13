@@ -7,7 +7,10 @@
 .btn-warning{
     font-family: 'Pirata One', cursive;
     font-size: 25px;
+    letter-spacing: 4px;
+    border-radius: 4px;
 }
+
 h3 {
     font-family: 'Pirata One', cursive;
     letter-spacing: 3px;

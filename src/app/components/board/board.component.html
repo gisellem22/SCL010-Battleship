@@ -6,6 +6,6 @@
         (click)="playGame(i)">
     </app-square>
 </main>
-<button type="button" class="btn btn-warning btn-lg px-5 py-3 mt-3 shadow my-4" 
-(click)="startGame()">Start</button>
+<button type="button" class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" 
+(click)="startGame()" *ngIf="player2.treasuresAt.length===0">Start</button>
 </section>       

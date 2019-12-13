@@ -9,32 +9,49 @@ import { BoardsService } from '../../services/boards.service';
 export class EnemyBoardComponent implements OnInit {
 
   squares: any[];
-  index: boolean;
+  index: any;
   winner: string;
-  arrOfIdx: number[] = [];
-  treasuresAt: number[];
-  
+
+  //Pirata 1
+  player1: any = {
+    arrOfIdx: [],
+    treasuresAt: []
+  }
+
+  //Pirata 2
+  player2: any = {
+    arrOfIdx: [],
+    treasuresAt: [],
+    score: 0
+  }
+
+  currentTurn: string = 'p1';
+
+  //Estado de Tesoros Guardados por jugador
   hidding: any = {
-    player1: false
+    player1: false,
+    player2: false
+  };
+
+  //Turnos de Jugada
+  turn: any = {
+    player1: "p1",
+    player2: "p2"
   };
 
   constructor(public boardsService:BoardsService) { }
 
   ngOnInit() {
     this.newGame();
-    this.boardsService.newGameObservable.subscribe(arr => {
-      console.log(arr)
-      this.arrOfIdx = arr;
-      console.log("arr",this.arrOfIdx, "state",this.hidding.player1)
-      this.startGame()
-    });
+    console.log("hola")
+    this.player1.treasuresAt = this.boardsService.sendTreasure()
+    console.log("oiiiiiiii", this.player1.treasuresAt)  
   }
 
   newGame() {
     this.squares = Array(9).fill(null);
     this.winner = null;
     this.index = true;
-    this.arrOfIdx = [];
   };
 
   // play(value: boolean) {
@@ -45,63 +62,23 @@ export class EnemyBoardComponent implements OnInit {
   //     return this.index = false;
   //   }
   // };
-  playGame(idx:number) {
-    console.log(this.hidding.player1);
-    if (this.hidding.player1 ===false){
-      this.hideTreasures(idx)
-    } else {
-      this.makeMove(idx)
-    }
-  };
   
-  hideTreasures(idx: number) {
-    //si no existe nada en el arreglo, guarda el primer indice
-    if (this.arrOfIdx.length < 1) {
-      this.arrOfIdx.push(idx)
-      this.index = true;
-      this.squares.splice(idx, 1, this.index);
-      console.log(this.arrOfIdx)
-      //si el arreglo tiene de 1 a 3 indices
-    } else if (this.arrOfIdx.length > 0 && this.arrOfIdx.length < 3) {
-      // impide pushear el mismo indice
-      if (this.arrOfIdx.includes(idx)) {
-        console.log("try again")
-        //si el indice no está contenido en el arreglo, pushealo
-      } else {
-        this.arrOfIdx.push(idx)
-        this.index = true;
-        this.squares.splice(idx, 1, this.index);
-        console.log(this.arrOfIdx)
-      }
-    } else {
-      console.log("hasta aqui nomás")
-    }
-    console.log(this.arrOfIdx)
-  };
 
-  startGame() {
-    if (this.arrOfIdx.length === 3) {
-      console.log("hey")
-      this.hidding.player1 = true;
-      this.treasuresAt = Array.from(this.arrOfIdx);
-      console.log("111",this.hidding,"original",this.arrOfIdx, "clone",this.treasuresAt)
-      this.newGame();
-    } 
-  };
-
-
-  makeMove(idx: number) {
-    console.log(idx)
+   //Identifica ataque - tesoro || calavera
+   makeMove(idx: number) {
+    console.log(idx,this.player1.treasuresAt)
     console.log(idx, !this.squares[idx], this.squares, this.index)
-    this.treasuresAt.forEach(a => {
+    this.player1.treasuresAt.forEach(a => {
       if (!this.squares[idx]) {
         if (idx === a) {
           this.index = true;
+          this.player2.score = this.player2.score+1;
+          this.boardsService.score2(this.player2.score)
           this.squares.splice(idx, 1, this.index);
-          console.log("oii", this.squares)
+          console.log("tesoro", this.squares, this.player2.score)
         }
         else {
-          console.log('xau')
+          console.log('calavera')
           this.index = false;
           this.squares.splice(idx, 1, this.index);
         }

@@ -10,22 +10,22 @@ export class BoardsService {
   squares: any[];
   index: boolean;
   winner: string;
-  arrOfIdx: number[] = [];
-  treasuresAt: number[] = [];
+  arrOfIdx: number[];;
+  treasuresAt: number[];;
   game:any;
 
   hidding: any = {
     player1: false
   };
 
-  public newGameSubject = new Subject <any>();
-  newGameObservable = this.newGameSubject.asObservable();
-
-  printTreasures(arr:number[]){
-    this.treasuresAt = arr;
-    this.newGameSubject.next(arr);
-    };
+  score: any = {
+    player1: 0,
+    player2: 0
+  };
   
+  constructor() { }
+
+  //Ataque
   public newAttackSubject = new Subject <any>();
   newAttackObservable = this.newAttackSubject.asObservable();
 
@@ -34,11 +34,56 @@ export class BoardsService {
     this.squares = arr;
     this.newAttackSubject.next(arr);
     };
-  
-  constructor() { }
 
+  //Printar tesoro desactivado
+  public treasureSubject = new Subject <any[]>();
+  treasureOservable = this.treasureSubject.asObservable();
   
+  printTreasures(arr:any[]){
+    this.treasuresAt = arr;
+    console.log("chegou",this.treasuresAt)
+    this.treasureSubject.next(this.treasuresAt);
+  };
   
+  sendTreasure() {
+    return this.treasuresAt;
+  }
+
+  //turnos de player
+  public newPlayerSubject = new Subject <any>();
+  newPlayerObservable = this.newPlayerSubject.asObservable();
+
+  player (player:string) {
+    this.newPlayerSubject.next(player);
+  };
+
+  //activar board Enemy
+  public newEnemySubject = new Subject <any>();
+  newEnemyObservable = this.newEnemySubject.asObservable();
+
+  enemy (enemy:string) {
+    this.newEnemySubject.next(enemy);
+  };
+  
+  //activar board Enemy
+  public scoreSubject = new Subject <any>();
+  scoreObservable = this.scoreSubject.asObservable();
+
+  score1 (score:number) {
+    this.score.player1 = score;
+    this.scoreSubject.next(score);
+    console.log(this.score.player1)
+  };
+
+  public scoreSecSubject = new Subject <any>();
+  scoreSecObservable = this.scoreSecSubject.asObservable();
+
+  score2 (score:number) {
+    this.score.player2 = score;
+    this.scoreSecSubject.next(score);
+    console.log(this.score.player2)
+  };
+
   // newGame() {
   //   this.squares = Array(9).fill(null);
   //   this.winner = null;
@@ -117,12 +162,4 @@ export class BoardsService {
   //     }
   //   })
   // };
-
-  public newPlayerSubject = new Subject <any>();
-  newPlayerObservable = this.newPlayerSubject.asObservable();
-
-  player (player:string) {
-    this.newPlayerSubject.next(player);
-  };
-  
 }

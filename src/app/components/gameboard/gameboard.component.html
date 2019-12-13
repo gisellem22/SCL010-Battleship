@@ -2,19 +2,27 @@
     <div class="container p-0">
         <div class="text-center">
                 <h1 class="titleTwo m-0 pt-3">Isla del Tesoro</h1>
+                <h3 *ngIf="winner"> El {{winner}} es el ganador!!!</h3>
             </div>
         <div class="row justify-content-center m-0">
             <div id="playerOne" class="text-center col-10 col-sm-10 col-md-5 col-lg-5 p-0">
-                <h3>JUGADOR 1 : Guarde el tesoro!</h3>
+                <h3 class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 1 : Guarde el tesoro!'"> {{player}} </h3>
+                <h3 class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 2 : Guarde el tesoro!'"> {{player}}</h3>
+                <h3 class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 1'"> {{player}}:{{score1}} </h3>
+                <h3 class="btn btn-warning btn-lg btn-block disabled px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 2'">{{player}}:{{score1}}</h3>
+
                 <app-board></app-board>
 
             </div>
-            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0 mt-3" *ngIf="!hola">
-                <div class="text-center mt-4">
+            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0 mt-5" *ngIf="!enemy">
+                <div class="text-center mt-5">
                  <img src="../../../assets/img/loro1.png"  class="image-fluid" style="width:400px; height:400px" alt="">
                 </div>
             </div>
-            <div id="playerTwo" class="col-10 col-sm-10 col-md-5 col-lg-5 p-0" *ngIf="hola">
+            <div id="playerTwo" class="text-center col-10 col-sm-10 col-md-5 col-lg-5 p-0" *ngIf="enemy">
+                <h3 class="btn btn-warning btn-lg btn-block px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 2'"> {{player}}:{{score2}} </h3>
+                <h3 class="btn btn-warning btn-lg btn-block disabled px-5 py-3 mt-3 shadow my-4" *ngIf="player === 'Pirata 1'">Pirata 2:{{score2}} </h3>
+
                 <app-enemy-board></app-enemy-board>
             </div>
         </div>
